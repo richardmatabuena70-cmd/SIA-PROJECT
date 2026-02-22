@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Quiz Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    
+    <!-- Math Quiz Header -->
+    <header class="quiz-header">
+      <div class="header-logo">
+        <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background circle -->
+          <circle cx="50" cy="50" r="45" fill="url(#logoGradient)" />
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="2" opacity="0.3"/>
+          <!-- Math symbols -->
+          <text x="50" y="35" text-anchor="middle" font-family="Times New Roman, serif" font-size="24" font-weight="bold" fill="#fff">π</text>
+          <text x="30" y="60" text-anchor="middle" font-family="Times New Roman, serif" font-size="20" font-weight="bold" fill="#fff">∑</text>
+          <text x="70" y="60" text-anchor="middle" font-family="Times New Roman, serif" font-size="18" font-weight="bold" fill="#fff">∞</text>
+          <text x="50" y="78" text-anchor="middle" font-family="Times New Roman, serif" font-size="16" font-weight="bold" fill="#fff">√</text>
+          <!-- Center dot -->
+          <circle cx="50" cy="50" r="5" fill="#f59e0b"/>
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#6366f1"/>
+              <stop offset="50%" style="stop-color:#8b5cf6"/>
+              <stop offset="100%" style="stop-color:#ec4899"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h1 class="header-title">Math Quiz</h1>
+      <span class="header-subtitle">Challenge Your Mind</span>
+      
+      <!-- Theme Toggle in Header -->
+      <div class="header-theme-toggle">
+        <label class="switch">
+          <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+          <span class="slider"></span>
+        </label>
+        <span class="theme-label" id="themeLabel">Dark Mode</span>
+      </div>
+    </header>
+    
+    <div class="math-symbols-bg" id="mathSymbolsBg"></div>
+    <div class="particles" id="particles"></div>
+    <div class="geometric-shapes" id="geometricShapes"></div>
+    <div class="mouse-trail" id="mouseTrail"></div>
+    <div class="math-banner" id="mathBanner">
+      x² + y² = z² &nbsp;&nbsp;•&nbsp;&nbsp; a² - b² = (a+b)(a-b) &nbsp;&nbsp;•&nbsp;&nbsp; π ≈ 3.14159... &nbsp;&nbsp;•&nbsp;&nbsp; e ≈ 2.71828... &nbsp;&nbsp;•&nbsp;&nbsp; f(x) = mx + b &nbsp;&nbsp;•&nbsp;&nbsp; √(a²+b²) = c &nbsp;&nbsp;•&nbsp;&nbsp; sin²θ + cos²θ = 1
+    </div>
+    
+    <div class="dashboard">
+      <div class="sidebar-container">
+        <div class="sidebar-header" onclick="toggleSidebar()">Dashboard</div>
+        <aside id="sidebar" class="collapsed">
+          <a href="index.html" class="sidebar-break-btn" data-icon="🧠">Brain Break</a>
+          <button onclick="chooseLevel()" data-icon="🎮">Play the Game</button>
+          <button onclick="showScores()" data-icon="📊">Current Score</button>
+          <button onclick="showTime()" data-icon="⏱">Remaining Time</button>
+          <button onclick="showAccuracy()" data-icon="🎯">Accuracy</button>
+          <button onclick="showAnswers()" data-icon="📝">Response Review</button>
+          <button onclick="showLiveProgress()" data-icon="📈">Question Progress</button>
+          <button onclick="showRanking()" data-icon="🏆">Rank Score</button>
+          <button onclick="showAchievements()" data-icon="🏅">Achievements</button>
+          <button onclick="showStats()" data-icon="📈">My Statistics</button>
+          <button onclick="showUsers()" data-icon="👤">User Account</button>
+          <button class="sidebar-about-btn" onclick="showAbout()" data-icon="ℹ️">About Project</button>
+          <button onclick="logout()" data-icon="🚪">Logout</button>
+        </aside>
+      </div>
+
+      <main id="content">
+        <h1>Welcome to Math Quiz!</h1>
+        <p>Select an option from the sidebar to begin your math challenge.</p>
+      </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/api-intercept.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/quiz.js"></script>
+    
+    <!-- About Project Modal -->
+    <div id="aboutModal" class="about-modal" onclick="closeAbout(event)">
+      <div class="about-content">
+        <span class="about-close-btn" onclick="hideAbout()">&times;</span>
+        <div class="math-symbols">π ∑ √ ∞</div>
+        <h2>Math Quiz Project</h2>
+        <p>Welcome to <strong>Math Quiz</strong> - A fun and interactive way to challenge your mathematical skills!</p>
+        <p>This project was built to make learning math engaging and enjoyable for everyone. Whether you're a student looking to practice or just someone who loves numbers, this quiz offers something for all levels.</p>
+        <p>🎯 <strong>Features:</strong> Multiple difficulty levels, score tracking, accuracy stats, achievements, and more!</p>
+        <p>💡 <strong>Remember:</strong> "Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding." - William Paul Thurston</p>
+      </div>
+    </div>
+    
+    <script>
+      function showAbout() {
+        document.getElementById('aboutModal').classList.add('show');
+      }
+      
+      function hideAbout() {
+        document.getElementById('aboutModal').classList.remove('show');
+      }
+      
+      function closeAbout(event) {
+        if (event.target.id === 'aboutModal') {
+          hideAbout();
+        }
+      }
+    </script>
+  </body>
+</html>
